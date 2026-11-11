@@ -2,22 +2,43 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Клуб «Своя» — женский фитнес-клуб в Марьино</title>
-<meta http-equiv="refresh" content="0; url=https://svoya-club.onrender.com/">
-<link rel="canonical" href="https://svoya-club.onrender.com/">
+<meta name="description" content="Женский фитнес-клуб «Своя» в Марьино: тренажёрный зал, групповые занятия, абонементы онлайн.">
+<meta name="theme-color" content="#0d191b">
+<link rel="icon" href="static/img/favicon.svg" type="image/svg+xml">
 <style>
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0d191b; color: #eaf5f2;
-         font: 16px/1.5 system-ui, sans-serif; text-align: center; padding: 16px; box-sizing: border-box; }
-  a { color: #73dec2; }
+  :root { --bg: #0d191b; --fg: #eaf5f2; --accent: #73dec2; --muted: #9fb7b2; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+               font: 16px/1.5 Manrope, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: var(--bg); }
+  #boot { position: fixed; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; z-index: 2;
+          background: var(--bg); transition: opacity .3s; }
+  #boot.hidden { opacity: 0; pointer-events: none; }
+  #boot h1 { margin: 0 0 6px; font-size: clamp(1.8rem, 6vw, 2.6rem); letter-spacing: -.02em; }
+  #boot h1 span { color: var(--accent); }
+  #boot p { margin: 0; color: var(--muted); }
+  .bar { width: min(280px, 70vw); height: 4px; margin: 22px auto 10px; border-radius: 4px; background: #1d3236; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .4s; }
+  #busy { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--accent); z-index: 3; opacity: 0;
+          transition: width 2s ease-out, opacity .2s; }
+  #busy.on { width: 85%; opacity: 1; }
+  #boot .err { color: #ff9b9b; max-width: 460px; }
 </style>
 </head>
 <body>
-<div>
-  <h1>Клуб «Своя»</h1>
-  <p>Открываем сайт… Если сервер спал, первая загрузка займёт до минуты.</p>
-  <p><a href="https://svoya-club.onrender.com/">Перейти на сайт</a></p>
+<div id="boot" role="status" aria-live="polite">
+  <div>
+    <h1>Клуб <span>«Своя»</span></h1>
+    <p>Женский фитнес-клуб в Марьино</p>
+    <div class="bar"><i id="progress"></i></div>
+    <p id="status">Открываем сайт…</p>
+  </div>
 </div>
-<script>location.replace("https://svoya-club.onrender.com/" + location.search + location.hash);</script>
+<div id="busy"></div>
+<iframe id="view" title="Клуб «Своя»"></iframe>
+<script>window.SVOYA = {"version": "838e83ed92", "siteUrl": "https://egplatkov-spec.github.io/svoya/#", "adminPhone": "+79160000000", "adminHash": "pbkdf2_sha256$20000$b82cc05dfafce618bb6e7c6d6bab31ed$5bc7fb99e4d085fa4a2aecca6321664f8af1d4e59ad9c8fa96604d4c8d82bfbf", "packages": ["fastapi", "httpx", "jinja2", "markupsafe", "pydantic", "typing-extensions", "pydantic-core", "annotated-types", "typing-inspection", "starlette", "anyio", "sniffio", "annotated-doc", "sqlalchemy", "tzdata"], "extra": ["python_multipart-0.0.33-py3-none-any.whl", "itsdangerous-2.2.0-py3-none-any.whl", "markdown_it_py-4.3.0-py3-none-any.whl", "mdurl-0.1.2-py3-none-any.whl", "segno-1.6.6-py3-none-any.whl", "pydantic_settings-2.16.2-py3-none-any.whl", "python_dotenv-1.2.4-py3-none-any.whl"]};</script>
+<script src="shell.js?v=838e83ed92"></script>
 </body>
 </html>
